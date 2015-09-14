@@ -8,7 +8,7 @@
 #include <stdlib.h>
 
 
-void InOrderTraversalNode(struct Node *n) {
+void InOrderTraversalNode(Node *n) {
 
 	if (n != NULL) {
 		InOrderTraversalNode(n->left_child);

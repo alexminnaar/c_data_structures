@@ -8,21 +8,21 @@
 #ifndef BST_BST_H_
 #define BST_BST_H_
 
-struct Node {
+typedef struct{
 	double value;
 
 	struct Node *parent;
 	struct Node *right_child;
 	struct Node *left_child;
-};
+} Node;
 
-struct Tree {
+typedef struct{
 	struct Node *root;
-};
+} Tree;
 
 
 //returns pointer to array of node values in order
-void InOrderTraversalNode(struct Node *n);
+void InOrderTraversalNode(Node *n);
 
 
 
