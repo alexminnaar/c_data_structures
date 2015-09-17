@@ -8,7 +8,7 @@
 #ifndef BST_BST_H_
 #define BST_BST_H_
 
-typedef struct{
+typedef struct {
 	double value;
 
 	struct Node *parent;
@@ -16,14 +16,14 @@ typedef struct{
 	struct Node *left_child;
 } Node;
 
-typedef struct{
+typedef struct {
 	struct Node *root;
 } Tree;
-
 
 //returns pointer to array of node values in order
 void InOrderTraversalNode(Node *n);
 
-
+//Insert node into a bst.
+Tree Insert(Tree *t, Node n);
 
 #endif /* BST_BST_H_ */
