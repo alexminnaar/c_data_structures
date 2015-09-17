@@ -18,7 +18,7 @@ void InOrderTraversalNode(Node *n) {
 	}
 };
 
-Tree Insert(Tree *t, Node n) {
+void Insert(Tree *t, Node n) {
 
 	Node *x = t->root, *y = NULL;
 
@@ -46,6 +46,5 @@ Tree Insert(Tree *t, Node n) {
 		y->left_child= &n;
 	}
 
-	return *t;
 };
 

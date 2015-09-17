@@ -24,6 +24,6 @@ typedef struct {
 void InOrderTraversalNode(Node *n);
 
 //Insert node into a bst.
-Tree Insert(Tree *t, Node n);
+void Insert(Tree *t, Node n);
 
 #endif /* BST_BST_H_ */
