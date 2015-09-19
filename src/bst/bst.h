@@ -8,7 +8,7 @@
 #ifndef BST_BST_H_
 #define BST_BST_H_
 
-typedef struct {
+typedef struct Node {
 	double value;
 
 	struct Node *parent;
@@ -16,14 +16,26 @@ typedef struct {
 	struct Node *left_child;
 } Node;
 
-typedef struct {
+typedef struct Tree {
 	struct Node *root;
 } Tree;
 
-//returns pointer to array of node values in order
-void InOrderTraversalNode(Node *n);
+//Print out elements in tree in sorted order.  Complexity O(n) where n is the number of nodes in the tree.
+void inOrderTraversalNode(Node *n);
 
-//Insert node into a bst.
-void Insert(Tree *t, Node n);
+//Insert node n into tree t.  Complexity O(h) where h is the height of the tree.
+void insert(Tree *t, Node n);
+
+//Transplant subtree rooted at node u with subtree rooted at node v in tree t.
+void transplant(Tree *t, Node *u, Node *v);
+
+//Find the minimum node in subtree of node n.  Complexity O(h) where h is the height of the subtree.
+Node * minimum(Node *n);
+
+//Find the maximum node in subtree of node n.  Complexity O(h) where h is the height of the subtree.
+Node * maximum(Node *n);
+
+//Delete node z from tree t
+void delete(Tree *t, Node *z);
 
 #endif /* BST_BST_H_ */
