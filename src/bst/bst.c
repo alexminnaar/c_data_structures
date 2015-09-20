@@ -19,7 +19,7 @@ void inOrderTraversalNode(Node *n) {
 }
 
 //Insert element into tree.  Complexity O(h) where h is the height of the tree.
-void insert(Tree *t, Node n) {
+void insert(Tree *t, Node *n) {
 
 	Node *x = t->root, *y = NULL;
 
@@ -29,22 +29,21 @@ void insert(Tree *t, Node n) {
 		//save last non-NULL value. We will insert node n as a child to this leaf.
 		y = x;
 
-		if (n.value < x->value) {
+		if (n->value < x->value) {
 			x = x->left_child;
 		} else {
 			x = x->right_child;
 		}
-
 	}
 
 	//The parent of the node to insert is the leaf we reached
-	n.parent = y;
+	n->parent = y;
 
 	//If n is greater than y then it is its right child and vice-versa.
-	if (n.value > y->value) {
-		y->right_child = &n;
+	if (n->value > y->value) {
+		y->right_child = n;
 	} else {
-		y->left_child = &n;
+		y->left_child = n;
 	}
 
 }
@@ -87,6 +86,14 @@ Node * maximum(Node *n) {
 	}
 
 	return n;
+}
+
+Node * successor(Node *n){
+	return minimum(n->right_child);
+}
+
+Node * predecessor(Node *n){
+	return maximum(n->left_child);
 }
 
 //Delete node z from tree t
