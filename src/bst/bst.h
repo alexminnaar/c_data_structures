@@ -35,11 +35,19 @@ Node * minimum(Node *n);
 //Find the maximum node in subtree of node n.  Complexity O(h) where h is the height of the subtree.
 Node * maximum(Node *n);
 
+//Find the in-order successor of a given node.
 Node * successor(Node *n);
 
+//Find the in-order predecessor of a given node.
 Node * predecessor(Node *n);
 
 //Delete node z from tree t
 void delete(Tree *t, Node *z);
+
+/*
+ Determine if a node with a given value exists in a tree.  Returns the node or NULL if it doesn't exit.
+ O(logn) average, O(h) worst case.
+ */
+Node * search(Tree *t, double v);
 
 #endif /* BST_BST_H_ */

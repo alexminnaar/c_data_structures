@@ -24,7 +24,7 @@ void insert(Tree *t, Node *n) {
 	Node *x = t->root, *y = NULL;
 
 	//follow tree down until we reach a leaf of the tree
-	while (x != NULL) {
+	while (x) {
 
 		//save last non-NULL value. We will insert node n as a child to this leaf.
 		y = x;
@@ -54,7 +54,7 @@ void transplant(Tree *t, Node *u, Node *v) {
 	Node *p = u->parent;
 
 	//replace u's parent's child pointer to v
-	if (p == NULL) {
+	if (!p) {
 		t->root = v;
 	} else if (u == p->left_child) {
 		p->left_child = v;
@@ -88,11 +88,13 @@ Node * maximum(Node *n) {
 	return n;
 }
 
-Node * successor(Node *n){
+//Find the in-order successor of a given node.
+Node * successor(Node *n) {
 	return minimum(n->right_child);
 }
 
-Node * predecessor(Node *n){
+//Find the in-order predecessor of a given node.
+Node * predecessor(Node *n) {
 	return maximum(n->left_child);
 }
 
@@ -100,10 +102,10 @@ Node * predecessor(Node *n){
 void delete(Tree *t, Node *z) {
 
 	//if node z has no left subtree, replace z with right subtree and vice-versa.
-	if (z->left_child == NULL) {
+	if (!(z->left_child)) {
 		transplant(t, z, z->right_child);
 
-	} else if (z->right_child == NULL) {
+	} else if (!(z->right_child)) {
 		transplant(t, z, z->left_child);
 	} else {
 		Node *y = minimum(z->right_child);
@@ -120,5 +122,29 @@ void delete(Tree *t, Node *z) {
 		y->left_child->parent = y;
 	}
 
+}
+
+/*
+ Determine if a node with a given value exists in a tree.  Returns the node or NULL if it doesn't exit.
+ O(logn) average, O(h) worst case.
+ */
+Node * search(Tree *t, double v) {
+
+	Node *n = t->root;
+
+	//search tree for node containing v
+	while (n) {
+		if (v == n->value) {
+			printf("found it! %f\n",n->value);
+			return n;
+		} else if (v > n->value) {
+			n = n->right_child;
+		} else {
+			n = n->left_child;
+		}
+	}
+
+	//if not found
+	return NULL;
 }
 
