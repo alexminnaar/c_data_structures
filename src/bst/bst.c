@@ -24,8 +24,7 @@ void insert(Tree *t, double v) {
 	Node *n = malloc(sizeof(Node));
 	n->left_child = NULL;
 	n->right_child = NULL;
-	//n->parent = malloc(sizeof(Node));
-	n->value=v;
+	n->value = v;
 
 	Node *x = t->root, *y = NULL;
 
@@ -46,7 +45,10 @@ void insert(Tree *t, double v) {
 	n->parent = y;
 
 	//If n is greater than y then it is its right child and vice-versa.
-	if (n->value > y->value) {
+	if(!y){
+		t->root=n;
+	}
+	else if (n->value > y->value) {
 		y->right_child = n;
 	} else {
 		y->left_child = n;
@@ -128,6 +130,8 @@ void delete(Tree *t, Node *z) {
 		y->left_child->parent = y;
 	}
 
+	//free the memory allocated to the node we just removed from tree.
+	free(z);
 }
 
 /*
