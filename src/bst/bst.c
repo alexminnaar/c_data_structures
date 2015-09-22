@@ -19,7 +19,13 @@ void inOrderTraversalNode(Node *n) {
 }
 
 //Insert element into tree.  Complexity O(h) where h is the height of the tree.
-void insert(Tree *t, Node *n) {
+void insert(Tree *t, double v) {
+
+	Node *n = malloc(sizeof(Node));
+	n->left_child = NULL;
+	n->right_child = NULL;
+	//n->parent = malloc(sizeof(Node));
+	n->value=v;
 
 	Node *x = t->root, *y = NULL;
 
@@ -135,7 +141,7 @@ Node * search(Tree *t, double v) {
 	//search tree for node containing v
 	while (n) {
 		if (v == n->value) {
-			printf("found it! %f\n",n->value);
+			printf("found it! %f\n", n->value);
 			return n;
 		} else if (v > n->value) {
 			n = n->right_child;

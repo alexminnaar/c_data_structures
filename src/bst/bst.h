@@ -24,7 +24,7 @@ typedef struct Tree {
 void inOrderTraversalNode(Node *n);
 
 //Insert node n into tree t.  Complexity O(h) where h is the height of the tree.
-void insert(Tree *t, Node *n);
+void insert(Tree *t, double v);
 
 //Transplant subtree rooted at node u with subtree rooted at node v in tree t.
 void transplant(Tree *t, Node *u, Node *v);
