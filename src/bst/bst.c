@@ -44,11 +44,11 @@ void insert(Tree *t, double v) {
 	//The parent of the node to insert is the leaf we reached
 	n->parent = y;
 
-	//If n is greater than y then it is its right child and vice-versa.
-	if(!y){
-		t->root=n;
-	}
-	else if (n->value > y->value) {
+	//If y is NULL than this must be an empty tree
+	if (!y) {
+		t->root = n;
+		//If n is greater than y then it is its right child and vice-versa.
+	} else if (n->value > y->value) {
 		y->right_child = n;
 	} else {
 		y->left_child = n;
